@@ -21,20 +21,20 @@
 
 #include "Volume.h"
 
-#define MAX_PARTS 4
+#define MAX_PARTS 15
 
 typedef android::List<char *> PathCollection;
 
 class DirectVolume : public Volume {
 public:
-    static const int MAX_PARTITIONS = 4;
+    static const int MAX_PARTITIONS = MAX_PARTS;
 protected:
     PathCollection *mPaths;
     int            mDiskMajor;
     int            mDiskMinor;
     int            mPartMinors[MAX_PARTITIONS];
     int            mDiskNumParts;
-    unsigned char  mPendingPartMap;
+    unsigned int   mPendingPartMap;
 
 public:
     DirectVolume(VolumeManager *vm, const char *label, const char *mount_point, int partIdx);
